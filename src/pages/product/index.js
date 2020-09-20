@@ -104,7 +104,7 @@ const Product = (props) => {
 
     if (existingItem) {
       existingItem.qtdd += composition.qtdd
-      existingItem.total += composition.total
+      existingItem.total = composition.total
     } else {
       //if item doesn't exist, simply add it
       cartCopy.push(composition)
