@@ -20,7 +20,9 @@ const Login = () => {
         'Login',
         JSON.stringify({ ...validation, password: 0 })
       )
-      alert(`Bem vindo(a) ${validation.nameCustomer}`)
+      validation.nameCustomer
+        ? alert(`Bem vindo(a) ${validation.nameCustomer}`)
+        : alert(`Bem vindo(a) ${validation.razaoSocial}`)
       window.location.href = '/'
     } else {
       alert('Digite um usuário ou senha válidos')
