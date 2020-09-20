@@ -18,20 +18,38 @@ import {
   Input,
 } from './styles'
 import { handleImage } from '../main/handleImage'
+import api from '../../services/api'
 
 const Order = () => {
   const [cart, setCart] = useState([])
+  const [totalOrder, setTotalOrder] = useState(0)
+  const [paymentDescription, setPaymentDescription] = useState([])
 
   // let localCart = localStorage.getItem('cart')
+  const loadPaymentForm = async () => {
+    const { data } = await api.get('/paymentForm')
+    setPaymentDescription(data)
+  }
 
   const loadCart = () => {
     setCart(JSON.parse(localStorage.getItem('cart')))
+  }
+
+  const loadTotal = () => {
+    let localCart = JSON.parse(localStorage.getItem('cart'))
+    console.log(localCart)
+    let total = localCart.reduce(function (acc, { total }) {
+      return (acc += parseFloat(total))
+    }, 0)
+    setTotalOrder(total.toFixed(2))
   }
 
   // const orderItems = JSON.parse(localStorage.getItem('cart'))
 
   useEffect(() => {
     loadCart()
+    loadTotal()
+    loadPaymentForm()
   }, [])
 
   const handleOrder = ({
@@ -57,6 +75,7 @@ const Order = () => {
 
       let cartString = JSON.stringify(cartCopy)
       localStorage.setItem('cart', cartString)
+      window.location.href = '/order'
     }
 
     const handleChange = (e) => {
@@ -82,6 +101,12 @@ const Order = () => {
 
       let cartString = JSON.stringify(cartCopy)
       localStorage.setItem('cart', cartString)
+
+      let total = cartCopy.reduce(function (acc, { total }) {
+        return (acc += parseFloat(total))
+      }, 0)
+      console.log(total)
+      setTotalOrder(total.toFixed(2))
 
       // console.log(change)
     }
@@ -145,12 +170,47 @@ const Order = () => {
       </FlexRow>
     )
   }
-
+  //list the forms of payment
+  const handlePayment = ({ paymentForm, idPaymentForm }) => {
+    return (
+      <option key={idPaymentForm} value={paymentForm}>
+        {paymentForm}
+      </option>
+    )
+  }
   return (
     <>
       <Nav>
         <Logo />
       </Nav>
+      <FlexRow>
+        <DivFlex className="flexOne">
+          <DivRow>
+            <DivRow>
+              <TitlePrice>
+                Total da ordem R$:
+                {totalOrder}
+              </TitlePrice>
+            </DivRow>
+            <DivRow>
+              <select>
+                <option value="-">Formas de Pagamento</option>
+                {paymentDescription.map(handlePayment)}
+              </select>
+            </DivRow>
+          </DivRow>
+        </DivFlex>
+        <DivFlex className="flexTwo">
+          <DivRow>
+            <DivButtons>
+              <Link href="/">
+                <Button>Voltar as compras</Button>
+              </Link>
+              <Button add>Finalizar a compra</Button>
+            </DivButtons>
+          </DivRow>
+        </DivFlex>
+      </FlexRow>
       <Container>
         {localStorage.getItem('cart') ? (
           cart.map(handleOrder)
