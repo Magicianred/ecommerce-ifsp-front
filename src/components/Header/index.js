@@ -6,15 +6,18 @@ const Header = () => {
   const [quantity, setQuantity] = useState(0)
   const [login, setLogin] = useState()
   const [ref, setRef] = useState('/login')
+  const [isLogged, setIsLogged] = useState(false)
 
   const handleLogin = () => {
     let localCart = localStorage.getItem('Login')
     if (localCart) {
       setLogin('Logout')
       setRef('/')
+      setIsLogged(true)
     } else {
       setLogin('Login')
       setRef('/login')
+      setIsLogged(false)
     }
   }
   const handleQuantity = () => {
@@ -59,7 +62,9 @@ const Header = () => {
             </Button>
           </Link>
           <Link href={ref} onClick={handleChange}>
-            <Button primary>{login}</Button>
+            <Button add={isLogged} primary>
+              {login}
+            </Button>
           </Link>
           <DropDown></DropDown>
         </div>

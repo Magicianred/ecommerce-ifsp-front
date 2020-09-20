@@ -60,6 +60,7 @@ const Button = styled.button`
     css`
       width: auto;
       background: green;
+      color: white;
     `};
   :disabled {
     background: gray;
