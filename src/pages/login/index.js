@@ -7,17 +7,38 @@ import { validate } from './validate'
 import api from '../../services/api'
 
 const Login = () => {
-  const handleLogin = async () => {
+  const handleLogin = async (user, pass) => {
     const pf = await api.get('/pessoaFisica')
     const pj = await api.get('/pessoaJuridica')
     const customers = [...pf.data, ...pj.data]
-    customers.map(({ email, password }) =>
-      console.log(`Usuário ${email} Senha ${password}`)
+    const validation = customers.find(
+      ({ email, password }) => user === email && pass === password
     )
+
+    if (validation) {
+      localStorage.setItem(
+        'Login',
+        JSON.stringify({ ...validation, password: 0 })
+      )
+      alert(`Bem vindo(a) ${validation.nameCustomer}`)
+      window.location.href = '/'
+    } else {
+      alert('Digite um usuário ou senha válidos')
+    }
+    // validation
+    //   ? localStorage.setItem(
+    //       'Login',
+    //       JSON.stringify({ ...validation, password: 0 })
+    //     )
+    //   : alert('Digite um usuário ou senha válidos')
+    //localStorage.setItem('Login',{ ...validation, password: 0 }))
+    // if (validation) {
+    //   alert(JSON.stringify({ ...validation, password: 0 }))
+    // }
   }
   const handleOnSubmit = async ({ email, password }, actions) => {
-    alert(JSON.stringify(email))
-    handleLogin()
+    // alert(JSON.stringify(email))
+    handleLogin(email, password)
   }
   return (
     <>
@@ -26,8 +47,8 @@ const Login = () => {
       </Nav>
       <Formik
         initialValues={{
-          email: 'gustavocampos@gustavo.com',
-          password: 'alalaala',
+          email: 'joao@joao.com',
+          password: 'teste123',
         }}
         validationSchema={Yup.object(validate)}
         onSubmit={handleOnSubmit}

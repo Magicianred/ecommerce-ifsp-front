@@ -4,16 +4,39 @@ import { Nav, Link, GreenNumber } from './styles'
 
 const Header = () => {
   const [quantity, setQuantity] = useState(0)
+  const [login, setLogin] = useState()
+  const [ref, setRef] = useState('/login')
 
+  const handleLogin = () => {
+    let localCart = localStorage.getItem('Login')
+    if (localCart) {
+      setLogin('Logout')
+      setRef('/')
+    } else {
+      setLogin('Login')
+      setRef('/login')
+    }
+  }
   const handleQuantity = () => {
     if (localStorage.getItem('cart')) {
       setQuantity(JSON.parse(localStorage.getItem('cart')).length)
     }
   }
 
+  const handleChange = (e) => {
+    if (login === 'Logout') {
+      setLogin('Login')
+      e.preventDefault()
+      setRef('/login')
+      alert('Usuário Saiu da sessão')
+      localStorage.removeItem('Login')
+    }
+  }
+
   useEffect(() => {
     handleQuantity()
-  }, [quantity])
+    handleLogin()
+  }, [quantity, login, ref])
 
   return (
     <header>
@@ -35,8 +58,8 @@ const Header = () => {
               <GreenNumber>{quantity}</GreenNumber>
             </Button>
           </Link>
-          <Link href="/login">
-            <Button primary>Login</Button>
+          <Link href={ref} onClick={handleChange}>
+            <Button primary>{login}</Button>
           </Link>
           <DropDown></DropDown>
         </div>
