@@ -34,9 +34,9 @@ const Product = (props) => {
 
   //The addition or subtraction of one product alter the total
   const handleChange = (e) => {
-    const { unitaryValue, idProduct } = product
+    const { unitaryValue } = product
     const {
-      target: { value, defaultValue },
+      target: { value },
     } = e
     setTotal(parseFloat((unitaryValue * value).toFixed(2)))
   }

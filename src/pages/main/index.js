@@ -17,7 +17,9 @@ const Main = () => {
 
   const loadProducts = async () => {
     const response = await api.get('/product')
-    setResponse({ ...response, data: response.data })
+    setTimeout(() => {
+      setResponse({ ...response, data: response.data })
+    }, 2000)
   }
 
   function nextPage() {
