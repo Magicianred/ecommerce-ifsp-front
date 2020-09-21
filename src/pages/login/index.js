@@ -16,9 +16,23 @@ const Login = () => {
     )
 
     if (validation) {
+      const { customerIdCustomer } = validation
+      const address = await api.get(
+        `/address?customerIdCustomer=${customerIdCustomer}`
+      )
+      // localStorage.setItem('Address', JSON.stringify(address.data))
+      const phone = await api.get(
+        `/phone?customerIdCustomer=${customerIdCustomer}`
+      )
+      // localStorage.setItem('Phone', JSON.stringify(phone.data))
+      let compose = { ...address.data[0], ...phone.data[0] }
       localStorage.setItem(
         'Login',
-        JSON.stringify({ ...validation, password: 0 })
+        JSON.stringify({
+          ...validation,
+          password: 0,
+          ...compose,
+        })
       )
       validation.nameCustomer
         ? alert(`Bem vindo(a) ${validation.nameCustomer}`)

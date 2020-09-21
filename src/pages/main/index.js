@@ -19,7 +19,7 @@ const Main = () => {
     const response = await api.get('/product')
     setTimeout(() => {
       setResponse({ ...response, data: response.data })
-    }, 2000)
+    })
   }
 
   function nextPage() {

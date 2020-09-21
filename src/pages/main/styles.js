@@ -24,6 +24,7 @@ export const Product = styled.div`
   padding: 0.5em 0.5em;
   border: 3px solid gray;
   border-radius: 0 2em 2em;
+  max-height: 465px;
 `
 
 export const Img = styled.img`
