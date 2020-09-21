@@ -66,7 +66,9 @@ const Footer = () => (
         </Button>
       </div>
     </Nav>
-    <Copyright>GAJ Soluções em Ecommerce @2020. All rights reserved</Copyright>
+    <Copyright>
+      Alex, Gustavo e João Soluções em Ecommerce @2020. All rights reserved
+    </Copyright>
   </>
 )
 
