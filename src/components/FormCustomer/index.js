@@ -31,7 +31,7 @@ let token = generate_token(30)
 
 const FormCustomer = ({ isOpen, toggle }) => {
   const handleOnSubmit = async (values, actions) => {
-    alert(JSON.stringify(values))
+    // alert(JSON.stringify(values))
     const config = {
       headers: {
         'content-type': 'application/x-www-form-urlencoded;charset=utf-8',
@@ -43,7 +43,12 @@ const FormCustomer = ({ isOpen, toggle }) => {
       querystring.stringify(values),
       config
     )
-    alert(response.data)
+    if (response.data[0].result === 'Dados inseridos com sucesso') {
+      alert('Dados cadastrados com sucesso!')
+      window.location.href = '/'
+    } else {
+      alert('Dados inválidos')
+    }
   }
 
   return (
