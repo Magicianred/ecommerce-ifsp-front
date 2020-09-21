@@ -276,12 +276,21 @@ const Order = () => {
       }
 
       // console.log(salePFisica)
-      let response = await api.post(
-        '/salePFisica',
-        JSON.stringify(salePFisica),
-        config
+      //The cors isn't work
+      //##-----##//
+      // let response = await api.post(
+      //   '/salePFisica',
+      //   JSON.stringify(salePFisica),
+      //   config
+      // )
+      // console.log(response) //Show the paymentForm
+      //##-----##//
+
+      alert(
+        '***Muito obrigado pela preferência, seu pedido chegará dentro de 10 dias úteis***\n'
       )
-      console.log(response) //Show the paymentForm
+      localStorage.removeItem('cart')
+      window.location.href = '/'
     }
   }
 
