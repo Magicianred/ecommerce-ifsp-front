@@ -1,3 +1,33 @@
+# Projeto Interdisciplinar - Ecommerce - Front-End
+
+**Interdisciplinary project** for [graduate school in web development](<(https://itp.ifsp.edu.br/index.php/pos-graduacao/2-uncategorised/108-espweb)>) at Instituto Federal de São Paulo - Câmpus Itapetininga. We'll built an _ecommerce_ with some tools used in the first semester.
+
+- [Back-end](https://github.com/gusdecante/ecommerce-ifsp)
+  >
+
+## Participants
+
+1. [AlexRodriguesbeta](https://github.com/AlexRodriguesbeta)
+2. [joaom007](https://github.com/joaom007)
+3. [gusdecante](https://github.com/gusdecante)
+
+>
+
+## Stacks
+
+- Java
+- Servelet
+- JavaScript
+- Tomcat
+- Maven
+- Mysql
+- Mongodb
+- ReactJS
+
+>
+
+# Instructions
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
