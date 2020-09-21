@@ -13,7 +13,8 @@
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.3",
     "styled-components": "^5.2.0",
-    "yup": "^0.29.3"
+    "yup": "^0.29.3",
+    "querystring": "^0.2.0"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -35,8 +36,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "devDependencies": {
-    "querystring": "^0.2.0"
   }
 }

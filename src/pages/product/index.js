@@ -164,8 +164,7 @@ const Product = (props) => {
             {cubaType}
           </TitleDetails>
           <TitleDetails>
-            <Strongest>Comprimento </Strongest>x<Strongest> Largura </Strongest>{' '}
-            x<Strongest> Altura: </Strongest>
+            <Strongest> Descrição: </Strongest>
             {description}
           </TitleDetails>
         </DivFlex>

@@ -35,7 +35,7 @@ export const handleProducts = ({
         </Link>
       </Flex>
       <DivDetails>
-        <Details>C x L x A: {description}</Details>
+        <Details>Descrição: {description}</Details>
         <Details>Categoria: {category}</Details>
         <Details>Acabamento: {finishingProcess}</Details>
       </DivDetails>

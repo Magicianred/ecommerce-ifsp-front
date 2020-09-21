@@ -41,6 +41,7 @@ const Order = () => {
   const loadTotal = () => {
     let localCart = JSON.parse(localStorage.getItem('cart'))
     console.log(localCart)
+    if (!localCart) window.location.href = '/'
     let total = localCart.reduce(function (acc, { total }) {
       return (acc += parseFloat(total))
     }, 0)
@@ -316,10 +317,11 @@ const Order = () => {
       stock,
       unitaryValue,
       imageLink,
+      category,
     } = local
 
     //mounting a requisition
-    // stock = stock - qtdd
+    stock = stock - qtdd
     // const updatedStock = {
     //   idProduct,
     //   categoryIdCategory,
@@ -330,6 +332,7 @@ const Order = () => {
     //   stock,
     //   unitaryValue,
     //   imageLink,
+    //   category,
     // }
 
     //HERE WE HAVE A CORS ERROR, SO THE UPDATE IS NOT WORKING UNTIL NOW
@@ -338,6 +341,7 @@ const Order = () => {
     //   querystring.stringify(updatedStock),
     //   config
     // )
+    // console.log(`Updating stock${data}`)
     // console.log(data)
     if (index === 0) {
       //Register all the NF in mongoDB
