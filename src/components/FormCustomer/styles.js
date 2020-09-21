@@ -46,6 +46,7 @@ export const GridContainer = styled.div`
   top: 2em;
   left: 15em;
   right: 15em;
+  right: 15em;
   padding: 0.7em;
   border: 1px solid gray;
   background-color: white;
@@ -145,6 +146,7 @@ export const GridContainer = styled.div`
   }
 
   @media (max-width: 900px) {
+    top: 0;
     left: 0;
     right: 0;
   }

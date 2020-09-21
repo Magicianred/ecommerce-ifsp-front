@@ -92,6 +92,12 @@ export const GridContainer = styled.div`
   .submit {
     grid-area: center-button;
   }
+
+  @media (max-width: 900px) {
+    top: 0;
+    left: 0;
+    right: 0;
+  }
 `
 
 export const StyledTerms = styled.div`

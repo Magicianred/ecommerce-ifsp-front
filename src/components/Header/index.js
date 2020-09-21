@@ -43,11 +43,11 @@ const Header = () => {
 
   return (
     <header>
-      <Nav>
+      <Nav style={{ padding: '0 5vw' }}>
         <div>
           <Logo>MGAJ</Logo>
         </div>
-        <div>
+        <div style={{ marginLeft: '20%' }}>
           <Input placeholder="pesquisar por produto..."></Input>
           <Button>Pesquisar</Button>
         </div>
